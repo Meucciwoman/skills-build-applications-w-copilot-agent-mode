@@ -39,36 +39,68 @@ function Teams() {
     fetchTeams();
   }, []);
 
-  if (loading) return <div className="alert alert-info">Loading teams...</div>;
-  if (error) return <div className="alert alert-danger">Error: {error}</div>;
+  if (loading) {
+    return (
+      <div className="row">
+        <div className="col-md-12">
+          <div className="alert alert-info" role="alert">
+            <div className="loading-spinner">⏳</div> Loading teams...
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="row">
+        <div className="col-md-12">
+          <div className="alert alert-danger" role="alert">
+            <strong>Error:</strong> {error}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div>
-      <h2>Teams</h2>
-      {teams.length === 0 ? (
-        <p className="text-muted">No teams found.</p>
-      ) : (
-        <div className="table-responsive">
-          <table className="table table-striped">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              {teams.map((team) => (
-                <tr key={team.id}>
-                  <td>{team.id}</td>
-                  <td>{team.name || 'N/A'}</td>
-                  <td>{team.description || 'N/A'}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+    <div className="row">
+      <div className="col-md-12">
+        <div className="d-flex justify-content-between align-items-center mb-4">
+          <h2>🤝 Teams</h2>
+          <span className="badge bg-info">{teams.length} teams</span>
         </div>
-      )}
+
+        {teams.length === 0 ? (
+          <div className="card">
+            <div className="card-body text-center py-5">
+              <div className="empty-state-icon">📭</div>
+              <p className="empty-state-text">No teams found.</p>
+            </div>
+          </div>
+        ) : (
+          <div className="row">
+            {teams.map((team) => (
+              <div key={team.id} className="col-md-6 col-lg-4 mb-4">
+                <div className="card h-100">
+                  <div className="card-header">
+                    <h5 className="card-title mb-0">{team.name || 'N/A'}</h5>
+                  </div>
+                  <div className="card-body">
+                    <p className="card-text">{team.description || 'No description available.'}</p>
+                    <span className="badge bg-info me-2">ID: {team.id}</span>
+                  </div>
+                  <div className="card-footer bg-light">
+                    <button className="btn btn-sm btn-primary w-100">
+                      View Team
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
