@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <!-- Background -->
+  <defs>
+    <lineargradient id="gradBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0066cc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00cc99;stop-opacity:1" />
+    </lineargradient>
+    <lineargradient id="gradRobot" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0088ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00ddaa;stop-opacity:1" />
+    </lineargradient>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="96" cy="96" r="96" fill="url(#gradBg)" />
+
+  <!-- Robot head -->
+  <rect x="50" y="40" width="92" height="70" rx="8" fill="url(#gradRobot)" />
+
+  <!-- Left eye -->
+  <circle cx="65" cy="60" r="8" fill="#00ffaa" />
+  <circle cx="65" cy="60" r="5" fill="#0a1428" />
+
+  <!-- Right eye -->
+  <circle cx="127" cy="60" r="8" fill="#00ffaa" />
+  <circle cx="127" cy="60" r="5" fill="#0a1428" />
+
+  <!-- Mouth -->
+  <path d="M 70 75 Q 96 82 122 75" stroke="#0a1428" stroke-width="3" fill="none" stroke-linecap="round" />
+
+  <!-- Left dumbbell arm -->
+  <g>
+    <rect x="35" y="95" width="15" height="12" rx="6" fill="#00ccff" />
+    <circle cx="30" cy="101" r="6" fill="#ffaa00" />
+    <circle cx="24" cy="101" r="6" fill="#ffaa00" />
+  </g>
+
+  <!-- Right dumbbell arm -->
+  <g>
+    <rect x="142" y="95" width="15" height="12" rx="6" fill="#00ccff" />
+    <circle cx="162" cy="101" r="6" fill="#ffaa00" />
+    <circle cx="168" cy="101" r="6" fill="#ffaa00" />
+  </g>
+
+  <!-- Body -->
+  <rect x="55" y="115" width="82" height="50" rx="8" fill="#0099ff" />
+
+  <!-- Chest emblem -->
+  <circle cx="96" cy="140" r="15" fill="#ffffff" opacity="0.3" />
+  <text x="96" y="144" font-size="20" font-weight="bold" fill="#ffffff" text-anchor="middle" dominant-baseline="middle">⚡</text>
+
+  <!-- Bottom accent -->
+  <rect x="50" y="160" width="92" height="4" rx="2" fill="#00ffaa" />
+</svg>

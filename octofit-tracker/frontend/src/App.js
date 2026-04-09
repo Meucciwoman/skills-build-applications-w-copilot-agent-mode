@@ -14,7 +14,8 @@ function App() {
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
           <div className="container-fluid">
             <Link className="navbar-brand" to="/">
-              💪 OctoFit Tracker
+              <img src="/octofitapp-logo.png" alt="OctoFit Logo" />
+              OctoFit Tracker
             </Link>
             <button
               className="navbar-toggler"
@@ -71,7 +72,7 @@ function App() {
         </div>
 
         <footer className="bg-dark text-white text-center py-4 mt-5">
-          <p>&copy; 2026 OctoFit Tracker. All rights reserved.</p>
+          <p>&copy; 2026 OctoFit Tracker. Track your fitness. Dominate the leaderboard. 💪</p>
         </footer>
       </div>
     </Router>
@@ -84,6 +85,16 @@ function Home() {
       <div className="col-md-12">
         <div className="card">
           <div className="card-body text-center py-5">
+            <img
+              src="/octofitapp-logo.png"
+              alt="OctoFit Logo"
+              style={{
+                width: '120px',
+                height: 'auto',
+                marginBottom: '1.5rem',
+                filter: 'drop-shadow(0 4px 8px rgba(0, 102, 204, 0.2))'
+              }}
+            />
             <h1 className="card-title display-4">Welcome to OctoFit Tracker 💪</h1>
             <p className="card-text lead">
               Track your fitness journey, compete with teams, and reach your goals!
@@ -109,7 +120,7 @@ function Home() {
                 <h5 className="card-title">👥 User Management</h5>
               </div>
               <div className="card-body">
-                <p className="card-text">Manage and view all users in the system.</p>
+                <p className="card-text">Manage and view all users in the system. Track user profiles and achievements.</p>
               </div>
             </div>
           </div>
@@ -119,7 +130,7 @@ function Home() {
                 <h5 className="card-title">🏃 Activity Tracking</h5>
               </div>
               <div className="card-body">
-                <p className="card-text">Track and log all fitness activities.</p>
+                <p className="card-text">Log and track all your fitness activities with detailed metrics and progress.</p>
               </div>
             </div>
           </div>
@@ -129,7 +140,7 @@ function Home() {
                 <h5 className="card-title">🏆 Leaderboard</h5>
               </div>
               <div className="card-body">
-                <p className="card-text">Compete and see who's leading the pack!</p>
+                <p className="card-text">Compete with friends and see who's leading the pack in the fitness challenge!</p>
               </div>
             </div>
           </div>
