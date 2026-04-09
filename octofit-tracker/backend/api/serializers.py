@@ -18,11 +18,21 @@ class TeamMemberSerializer(serializers.ModelSerializer):
 
 
 class TeamSerializer(serializers.ModelSerializer):
-    members = TeamMemberSerializer(many=True, read_only=True)
+    members = serializers.SerializerMethodField()
 
     class Meta:
         model = Team
         fields = ['id', 'name', 'description', 'members', 'created_at', 'updated_at']
+
+    def get_members(self, obj):
+        # Handle teams without primary keys
+        if not obj.pk:
+            return []
+        try:
+            members = obj.members.all()
+            return TeamMemberSerializer(members, many=True).data
+        except (ValueError, AttributeError):
+            return []
 
 
 class ActivitySerializer(serializers.ModelSerializer):
