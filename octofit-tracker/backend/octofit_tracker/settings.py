@@ -26,9 +26,7 @@ SECRET_KEY = 'django-insecure-l^^=jsv!yj$)(fdxi&*p9m&uew1o^dv^^o-guv-x_f=v8(h&v+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
-if os.environ.get('CODESPACE_NAME'):
-    ALLOWED_HOSTS.append(f"{os.environ.get('CODESPACE_NAME')}-8000.app.github.dev")
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -42,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
+    'djongo',
+    'octofit_tracker',
     'api',
 ]
 
@@ -140,11 +140,5 @@ REST_FRAMEWORK = {
     ],
 }
 
-# CORS configuration
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
-    'http://127.0.0.1:3000',
-]
-
-if os.environ.get('CODESPACE_NAME'):
-    CORS_ALLOWED_ORIGINS.append(f"https://{os.environ.get('CODESPACE_NAME')}-3000.app.github.dev")
+# CORS configuration - Allow all origins
+CORS_ALLOW_ALL_ORIGINS = True

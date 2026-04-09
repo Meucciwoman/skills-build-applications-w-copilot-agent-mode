@@ -1,22 +1,23 @@
 from django.core.management.base import BaseCommand
 from django.contrib.auth.models import User
 from api.models import Team, Activity, Workout
-from datetime import datetime, timedelta
 
 
 class Command(BaseCommand):
-    help = 'Populate the database with test data'
+    help = 'Populate the octofit_db database with test data'
 
     def handle(self, *args, **options):
         self.stdout.write(self.style.SUCCESS('Starting database population...'))
 
-        # Create test users
+        # Create test users - Super heroes
         users = []
         user_data = [
-            {'username': 'alice', 'email': 'alice@example.com', 'first_name': 'Alice', 'last_name': 'Johnson'},
-            {'username': 'bob', 'email': 'bob@example.com', 'first_name': 'Bob', 'last_name': 'Smith'},
-            {'username': 'charlie', 'email': 'charlie@example.com', 'first_name': 'Charlie', 'last_name': 'Brown'},
-            {'username': 'diana', 'email': 'diana@example.com', 'first_name': 'Diana', 'last_name': 'Wilson'},
+            {'username': 'batman', 'email': 'batman@example.com', 'first_name': 'Bruce', 'last_name': 'Wayne'},
+            {'username': 'superman', 'email': 'superman@example.com', 'first_name': 'Clark', 'last_name': 'Kent'},
+            {'username': 'iron_man', 'email': 'ironman@example.com', 'first_name': 'Tony', 'last_name': 'Stark'},
+            {'username': 'spider_man', 'email': 'spiderman@example.com', 'first_name': 'Peter', 'last_name': 'Parker'},
+            {'username': 'captain_america', 'email': 'captainamerica@example.com', 'first_name': 'Steve', 'last_name': 'Rogers'},
+            {'username': 'black_widow', 'email': 'blackwidow@example.com', 'first_name': 'Natasha', 'last_name': 'Romanoff'},
         ]
 
         for data in user_data:
@@ -27,12 +28,14 @@ class Command(BaseCommand):
             users.append(user)
             if created:
                 self.stdout.write(self.style.SUCCESS(f'  Created user: {user.username}'))
+            else:
+                self.stdout.write(self.style.WARNING(f'  User already exists: {user.username}'))
 
-        # Create test teams
+        # Create test teams - Marvel and DC
+        teams = []
         team_data = [
-            {'name': 'Fitness Warriors', 'description': 'A team dedicated to fitness excellence'},
-            {'name': 'Marathon Runners', 'description': 'Long-distance running enthusiasts'},
-            {'name': 'Gym Rats', 'description': 'Weightlifting and strength training'},
+            {'name': 'team-marvel', 'description': 'Marvel superheroes team'},
+            {'name': 'team-dc', 'description': 'DC superheroes team'},
         ]
 
         for data in team_data:
@@ -40,17 +43,20 @@ class Command(BaseCommand):
                 name=data['name'],
                 defaults={'description': data['description']}
             )
+            teams.append(team)
             if created:
                 self.stdout.write(self.style.SUCCESS(f'  Created team: {team.name}'))
+            else:
+                self.stdout.write(self.style.WARNING(f'  Team already exists: {team.name}'))
 
         # Create test activities
         activities_data = [
             {'user': users[0], 'activity_type': 'running', 'duration_minutes': 30, 'calories_burned': 300, 'distance_km': 5.0},
-            {'user': users[0], 'activity_type': 'cycling', 'duration_minutes': 45, 'calories_burned': 400, 'distance_km': 15.0},
-            {'user': users[1], 'activity_type': 'swimming', 'duration_minutes': 60, 'calories_burned': 500, 'distance_km': 2.0},
-            {'user': users[1], 'activity_type': 'weightlifting', 'duration_minutes': 60, 'calories_burned': 350, 'distance_km': 0.0},
-            {'user': users[2], 'activity_type': 'yoga', 'duration_minutes': 50, 'calories_burned': 200, 'distance_km': 0.0},
-            {'user': users[3], 'activity_type': 'walking', 'duration_minutes': 40, 'calories_burned': 150, 'distance_km': 3.0},
+            {'user': users[1], 'activity_type': 'cycling', 'duration_minutes': 45, 'calories_burned': 400, 'distance_km': 15.0},
+            {'user': users[2], 'activity_type': 'swimming', 'duration_minutes': 60, 'calories_burned': 500, 'distance_km': 2.0},
+            {'user': users[3], 'activity_type': 'weightlifting', 'duration_minutes': 60, 'calories_burned': 350, 'distance_km': 0.0},
+            {'user': users[4], 'activity_type': 'yoga', 'duration_minutes': 50, 'calories_burned': 200, 'distance_km': 0.0},
+            {'user': users[5], 'activity_type': 'walking', 'duration_minutes': 40, 'calories_burned': 150, 'distance_km': 3.0},
         ]
 
         for data in activities_data:
